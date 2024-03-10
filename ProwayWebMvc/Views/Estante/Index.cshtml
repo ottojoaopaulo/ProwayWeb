@@ -1,0 +1,26 @@
+﻿<h1>Listar entantes</h1>
+
+<div class="row"
+
+<div>
+    <tbody>
+        @foreach (var estante in ViewBag.Estante)
+        {
+            <tr>
+                <td>@estante.Id</td>
+                <td>@estante.Nome</td>
+                <td>@estante.Sigla</td>
+                <td>
+                    <a href="/estante=@estante.Id">
+                    </a>
+                    <a href="/estante=@estante.Nome">
+                    </a>
+                    <a href="/estante=@estante.Sigla">
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</div>

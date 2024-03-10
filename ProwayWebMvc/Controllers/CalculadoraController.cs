@@ -50,7 +50,7 @@ namespace ProwayWebMvc.Controllers
             [FromQuery] double peso,
             [FromQuery] double altura,
             [FromQuery] int idade,
-            [FromQuery] char nome) 
+            [FromQuery] string nome) 
         {
             var imc = peso / (altura * altura);
             return Ok($"Nome: {nome} de Idade: {idade} com IMC: {imc}");
@@ -62,7 +62,7 @@ namespace ProwayWebMvc.Controllers
             [FromForm] double peso,
             [FromForm] double altura,
             [FromForm] int idade,
-            [FromForm] char nome)
+            [FromForm] string nome)
         {
             var imc = peso / (altura * altura);
             return Ok($"Nome: {nome} de Idade: {idade} com IMC: {imc}");
