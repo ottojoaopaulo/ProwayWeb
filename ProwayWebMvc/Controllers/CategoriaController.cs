@@ -1,33 +1,57 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProwayWebMvc.Models.Categoria;
 using SupermercadoRepositorio.Repositorios;
-using SupermercadoRepositorios.Entidades;
+using SupermercadoServicos.Dtos.Categorias;
+using SupermercadoServicos.Interface;
+using SupermercadoServicos.Servicos;
 
 namespace ProwayWebMvc.Controllers
 {
     [Route("categoria")]
     public class CategoriaController : Controller
     {
+        private readonly ICategoriaServico _categoriaServico;
+        public CategoriaController()
+        {
+            _categoriaServico = new CategoriaServico();
+        }
         public IActionResult Index()
         {
-            var repositorio = new CategoriaRepositorio();
-            var categorias = repositorio.ObterTodos();
-
-            ViewBag.Categorias = categorias;
-            return View();
+            var categoriaDtos = _categoriaServico.ObterTodos();
+            var viewModels = new List<CategoriaIndexViewModel>();
+            foreach(var dto in categoriaDtos)
+            {
+                var viewModel = new CategoriaIndexViewModel
+                {
+                    Id = dto.Id,
+                    Nome = dto.Nome,
+                };
+                viewModels.Add(viewModel);
+            }
+            return View(viewModels);
         }
 
         [HttpGet("novo")]
         public IActionResult Novo()
-        { return View(); }
+        {
+            var viewModel = new CategoriaCadastrarViewModel();
+            return View(viewModel); 
+        }
 
         [HttpPost("novo")]
-        public IActionResult Create([FromForm]string nome)
+        public IActionResult Create([FromForm]string CategoriaCadastrarViewModel viewModel)
         {
-            var categoria = new Categoria();
-            categoria.Nome = nome;
+            if (!ModelState.IsValid)
+            {
+                return View("Novo", viewModel);
+            }
 
-            var repositorio = new CategoriaRepositorio();
-            repositorio.Cadastrar(categoria);
+            var dto = new CategoriaCadastrarDto
+            {
+                Nome.viewModel.Nome,
+            };
+
+            var int = _categoriaServico.Cadastrar(dto);
 
             return RedirectToAction("Index");
         }
@@ -35,8 +59,7 @@ namespace ProwayWebMvc.Controllers
         [HttpGet("apagar")]
         public IActionResult Apagar([FromQuery] int id)
         {
-            var repositorio = new CategoriaRepositorio();
-            repositorio.Apagar(id);
+            _categoriaRepositorio.Apagar(id);
 
             return RedirectToAction("Index");
         }
@@ -48,19 +71,32 @@ namespace ProwayWebMvc.Controllers
             var repositorio = new CategoriaRepositorio();
             var categoria = repositorio.ObterPorId(id);
 
-            ViewBag.Categoria = categoria;
-            return View();
+            var vielwModel = new CategoriaEditarViewModel
+            {
+                Id = categoria.Id,
+                Nome = categoria.Nome,
+            };
+
+            return View(vielwModel);
         }
 
         [HttpPost("editar")]
 
-        public IActionResult Update([FromQuery] int id, [FromForm] string nome)
-        {
-            var repositorio = new CategoriaRepositorio();
-            var categoria = repositorio.ObterPorId(id);
-            categoria.Nome = nome;
+        public IActionResult Update([FromForm] CategoriaEditarViewModel viewModel)
 
-            repositorio.Atualizar(categoria);
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Editar" , viewModel);
+            }
+            var categoria = 
+            {
+                Nome = viewModel.Nome,
+                Id = viewModel.Id
+            };
+
+            _categoriaServico.Editar(categoriaEditarDto);
+
             return RedirectToAction("index");
         }
      }

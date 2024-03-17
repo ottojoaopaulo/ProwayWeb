@@ -13,8 +13,7 @@ namespace SupermercadoRepositorios.BancoDados
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Dell\\Desktop\\joao\\C#\\C-sharp-n51\\17 02 2024\\Banco de Dados\\BancoDados.mbf.mdf\";Integrated Security=True;Connect Timeout=30;Encrypt=True");
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\74639\\Desktop\\BancoDados.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
         }
     }
 }
