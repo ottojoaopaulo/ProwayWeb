@@ -54,5 +54,14 @@ namespace ProwayWebMvc.Controllers
             repositorio.Atualizar(estante);
             return RedirectToAction("index");
         }
+        [HttpGet("apagar")]
+        public IActionResult Apagar([FromQuery] int id)
+        {
+            var repositorio = new EstanteRepositorio();
+            repositorio.Apagar(id);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
