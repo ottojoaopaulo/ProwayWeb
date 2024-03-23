@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProwayWebMvc.Models.Categoria;
-using SupermercadoRepositorio.Repositorios;
 using SupermercadoServicos.Dtos.Categorias;
 using SupermercadoServicos.Interface;
 using SupermercadoServicos.Servicos;
@@ -39,7 +38,7 @@ namespace ProwayWebMvc.Controllers
         }
 
         [HttpPost("novo")]
-        public IActionResult Create([FromForm]string CategoriaCadastrarViewModel viewModel)
+        public IActionResult Create([FromForm] CategoriaCadastrarViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -48,10 +47,10 @@ namespace ProwayWebMvc.Controllers
 
             var dto = new CategoriaCadastrarDto
             {
-                Nome.viewModel.Nome,
+                Nome = viewModel.Nome,
             };
 
-            var int = _categoriaServico.Cadastrar(dto);
+            var id = _categoriaServico.Cadastrar(dto);
 
             return RedirectToAction("Index");
         }
@@ -59,7 +58,7 @@ namespace ProwayWebMvc.Controllers
         [HttpGet("apagar")]
         public IActionResult Apagar([FromQuery] int id)
         {
-            _categoriaRepositorio.Apagar(id);
+            _categoriaServico.Apagar(id);
 
             return RedirectToAction("Index");
         }
@@ -68,8 +67,7 @@ namespace ProwayWebMvc.Controllers
 
         public IActionResult Editar([FromQuery] int id)
         {
-            var repositorio = new CategoriaRepositorio();
-            var categoria = repositorio.ObterPorId(id);
+            var categoria = _categoriaServico.ObterPorId(id);
 
             var vielwModel = new CategoriaEditarViewModel
             {
@@ -89,15 +87,15 @@ namespace ProwayWebMvc.Controllers
             {
                 return View("Editar" , viewModel);
             }
-            var categoria = 
+            var categoriaEditarDto = new CategoriaEditarDto
             {
                 Nome = viewModel.Nome,
-                Id = viewModel.Id
+                Id = viewModel.Id,
             };
 
             _categoriaServico.Editar(categoriaEditarDto);
 
             return RedirectToAction("index");
         }
-     }
+    }
 }

@@ -3,12 +3,6 @@ using SupermercadoRepositorios.Entidades;
 using SupermercadoRepositorios.Repositorios;
 using SupermercadoServicos.Dtos.Categorias;
 using SupermercadoServicos.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SupermercadoServicos.Servicos
 {
@@ -45,34 +39,34 @@ namespace SupermercadoServicos.Servicos
 
         public CategoriaDto ObterPorId(int id)
         {
-            var vategoria = _categoriaRepositorio.ObterPorId(id);
+            var categoria = _categoriaRepositorio.ObterPorId(id);
 
-            var
-                Id = categoria.Id,
-                Nome = categoria.Nome
-            };
-        }
-        //retorna alista criada
-        return categoriasDto;
-    
-}
-
-        public List<CategoriaDto> ObterTodos()
-        {
-            //busca lista de categoria no bd
-            var vategorias = _categoriaRepositorio.ObterTodos();
-            //cria uma lista de categoria dto, pq a camada de serviço retorna DTO para a camada de aplicação
-            var categoriasDto = new List<CategoriaDto>();
-            //percorre a lista de categorias no BD
-            foreach(var categoria in vategorias)
+            var categoriaDto = new CategoriaDto
             {
                 Id = categoria.Id,
                 Nome = categoria.Nome
             };
-            //adiciona a categoriaDto na lista de dtos
-            categoriasDto.Add(categoriasDto)
+            return categoriaDto;
+
         }
-        //retorna alista criada
-        return categoriasDtos;
+        public List<CategoriaDto> ObterTodos()
+        {
+            var categorias = _categoriaRepositorio.ObterTodos();
+            var categoriaDtos = new List<CategoriaDto>();
+            foreach (var categoria in categorias)
+            {
+                var categoriaDto = new CategoriaDto
+                {
+                    Id = categoria.Id,
+                    Nome = categoria.Nome
+                };
+                categoriaDtos.Add(categoriaDto);
+            }
+
+            //retorna alista criada
+            return categoriaDtos;
+        }
     }
+    
 }
+
