@@ -2,7 +2,8 @@
 {
     public class EstanteIndexViewModel
     {
-        public String Nome { get; set; }
+        public string Nome { get; set; }
+        public string Sigla { get; set; }
         public int Id { get; set; }
     }
 }

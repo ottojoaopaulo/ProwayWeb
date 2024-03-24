@@ -2,11 +2,12 @@
 using SupermercadoRepositorio.Modelos;
 using SupermercadoRepositorios.BancoDados;
 using SupermercadoRepositorios.Entidades;
+using SupermercadoRepositorios.Repositorios;
 using System.Data;
 
 namespace SupermercadoRepositorio.Repositorios
 {
-    public class ProdutoRepositorio
+    public class ProdutoRepositorio : IProdutoRepositorio
     {
         private SupermercadoContexto _contexto;
 

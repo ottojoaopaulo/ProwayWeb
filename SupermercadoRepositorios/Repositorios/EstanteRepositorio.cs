@@ -40,10 +40,5 @@ namespace SupermercadoRepositorio.Repositorios
         {
             return _contexto.Estantes.Where(x => x.Nome.Contains(pesquisa)).ToList();
         }
-
-        public dynamic ObterTodos()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

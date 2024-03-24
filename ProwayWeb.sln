@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProwayWebMvc", "ProwayWebMv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermercadoRepositorios", "SupermercadoRepositorios\SupermercadoRepositorios.csproj", "{A337FB5A-1151-41C3-B760-26069BB77F3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermercadoServicos", "SupermercadoServicos\SupermercadoServicos.csproj", "{7FAAC5E6-E38B-4DCC-82A7-1FBDE6762E85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermercadoServicos", "SupermercadoServicos\SupermercadoServicos.csproj", "{7FAAC5E6-E38B-4DCC-82A7-1FBDE6762E85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Aplicacao", "00 - Aplicacao", "{8C986EF0-2FA4-4736-8CF6-7FED2AFBD87B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Servico", "01 - Servico", "{B07D76E8-A3C2-4B6F-8056-46379FC256C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Repositorio", "02 - Repositorio", "{44F39881-719E-4CD5-9E24-FCE94142C237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +36,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{545663FF-102C-4166-8714-2EA56337C566} = {8C986EF0-2FA4-4736-8CF6-7FED2AFBD87B}
+		{A337FB5A-1151-41C3-B760-26069BB77F3D} = {44F39881-719E-4CD5-9E24-FCE94142C237}
+		{7FAAC5E6-E38B-4DCC-82A7-1FBDE6762E85} = {B07D76E8-A3C2-4B6F-8056-46379FC256C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {20F65F6D-F79A-4E5A-9B51-A024EA6A99A7}

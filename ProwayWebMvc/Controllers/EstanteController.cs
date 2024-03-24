@@ -25,6 +25,7 @@ namespace ProwayWebMvc.Controllers
                 {
                     Id = dto.Id,
                     Nome = dto.Nome,
+                    Sigla = dto.Sigla
                 };
                 viewModels.Add(viewModel);
             }

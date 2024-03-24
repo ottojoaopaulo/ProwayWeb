@@ -39,20 +39,22 @@ namespace SupermercadoServicos.Servicos
             var estanteDto = new EstanteDto
             {
                 Id = estante.Id,
-                Nome = estante.Nome
+                Nome = estante.Nome,
+                Sigla = estante.Sigla,
             };
             return estanteDto;
         }
         public List<EstanteDto> ObterTodos()
         {
-            var estantes = _estanteRepositorio.ObterTodos();
+            var estantes = _estanteRepositorio.ObterTodos(string.Empty);
             var estanteDtos = new List<EstanteDto>();
             foreach (var estante in estantes)
             {
                 var estanteDto = new EstanteDto
                 {
                     Id = estante.Id,
-                    Nome = estante.Nome
+                    Nome = estante.Nome,
+                Sigla = estante.Sigla,
                 };
                 estanteDtos.Add(estanteDto);
             }
