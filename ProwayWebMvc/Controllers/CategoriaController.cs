@@ -49,7 +49,7 @@ namespace ProwayWebMvc.Controllers
             {
                 Nome = viewModel.Nome,
             };
-
+              
             var id = _categoriaServico.Cadastrar(dto);
 
             return RedirectToAction("Index");

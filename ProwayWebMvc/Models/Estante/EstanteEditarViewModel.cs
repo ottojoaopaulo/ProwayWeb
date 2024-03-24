@@ -2,7 +2,7 @@
 {
     public class EstanteEditarViewModel
     {
-        public int Nome { get; set; }
-        public int Sigla { get; set; }
+        public string Nome { get; set; }
+        public int Id { get; set; }
     }
 }

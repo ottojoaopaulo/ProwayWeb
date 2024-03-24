@@ -1,8 +1,8 @@
 ﻿namespace SupermercadoServicos.Dtos.Estantes
 {
-    internal class EstanteEditarDto
+    public class EstanteEditarDto
     {
         public string Nome { get; set; }
-        public string Sigla { get; set; }
+        public int Id { get; set; }
     }
 }

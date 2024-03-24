@@ -1,4 +1,5 @@
 ﻿using SupermercadoRepositorio.Repositorios;
+using SupermercadoRepositorios.Entidades;
 using SupermercadoServicos.Dtos.Estantes;
 using SupermercadoServicos.Interface;
 
@@ -6,7 +7,7 @@ namespace SupermercadoServicos.Servicos
 {
     public class EstanteServico : IEstanteServico
     {
-        private IEstanteRepositorio estanteRepositorio;
+        private IEstanteRepositorio _estanteRepositorio;
         public EstanteServico()
         {
             _estanteRepositorio = new EstanteRepositorio();
@@ -17,7 +18,7 @@ namespace SupermercadoServicos.Servicos
         }
         public int Cadastrar(EstanteCadastrarDto estanteCadastrarDto)
         {
-            var estante = new EstanteCadastrarDto();
+            var estante = new Estante();
             estante.Nome = estanteCadastrarDto.Nome;
 
             _estanteRepositorio.Cadastrar(estante);
@@ -48,7 +49,7 @@ namespace SupermercadoServicos.Servicos
             var estanteDtos = new List<EstanteDto>();
             foreach (var estante in estantes)
             {
-                var estanteDtos = new EstanteDtos
+                var estanteDto = new EstanteDto
                 {
                     Id = estante.Id,
                     Nome = estante.Nome
@@ -57,7 +58,7 @@ namespace SupermercadoServicos.Servicos
             }
 
             //retorna alista criada
-            return estanteDto;
+            return estanteDtos;
         }
 
     }

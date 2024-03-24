@@ -2,7 +2,7 @@
 
 namespace SupermercadoServicos.Interface
 {
-    internal interface IEstanteServico
+    public interface IEstanteServico
     {
         List<EstanteDto> ObterTodos();
         EstanteDto ObterPorId(int id);

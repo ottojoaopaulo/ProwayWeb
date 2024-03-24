@@ -1,7 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProwayWebMvc.Models.Categoria;
 using ProwayWebMvc.Models.Estante;
+using SupermercadoServicos.Dtos.Estantes;
+using SupermercadoServicos.Interface;
 using SupermercadoServicos.Servicos;
 
 namespace ProwayWebMvc.Controllers
@@ -9,21 +10,21 @@ namespace ProwayWebMvc.Controllers
     [Route("estante")]
     public class EstanteController : Controller
     {
-        private readonly IEstanteServico estanteServico;
+        private readonly IEstanteServico _estanteServico;
         public EstanteController()
         {
             _estanteServico = new EstanteServico();
         }
         public IActionResult Index()
         {
-            var estanteDtos = new _estanteServico.ObterTodos();
+            var estanteDtos = _estanteServico.ObterTodos();
             var viewModels = new List<EstanteIndexViewModel>();
             foreach(var dto in estanteDtos)
             {
                 var viewModel = new EstanteIndexViewModel
                 {
+                    Id = dto.Id,
                     Nome = dto.Nome,
-                    Sigla = dto.Sigla,
                 };
                 viewModels.Add(viewModel);
             }
